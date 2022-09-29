@@ -3,8 +3,8 @@ from ms_truchet import MultiScaleTruchetPattern
 
 
 def main():
-    how_many_tiles = 10
-    of_size = 54
+    how_many_tiles = 5
+    of_size = 500
     multiscaleTruchetTiling = MultiScaleTruchetPattern(how_many_tiles, of_size, 'white','black')
     img = multiscaleTruchetTiling.paint_a_multiscale_truchet()
     imageio.imsave("mstruchet.png", img)
