@@ -363,6 +363,7 @@ class MultiScaleTruchetPattern:
         return img
 
     def paint_a_multiscale_truchet(self) -> Image:
+
         w, h = (
             self.how_many_tiles * self.tile_size,
             self.how_many_tiles * self.tile_size,
@@ -373,16 +374,20 @@ class MultiScaleTruchetPattern:
         tile_img_draw.rectangle(
             [(0, 0), (w + 2 * r, h + 2 * r)], fill=(125, 125, 125, 0)
         )
+
         for i in range(self.how_many_tiles):
             for j in range(self.how_many_tiles):
                 offset = (i * self.tile_size, j * self.tile_size)
                 if i % 2:
                     base_tile = self.paint_a_multiscale_subtile(
-                        2, 2, self.tile_size // 2, "black", "white"
+                        2, 2, self.tile_size // 2, self.fg_color, self.bg_color
                     )
                 else:
                     base_tile = self.create_base_tile(
-                        self.tile_size, "white", "black", kind=rd.choice(self.SYMBOLS)
+                        self.tile_size,
+                        self.bg_color,
+                        self.fg_color,
+                        kind=rd.choice(self.SYMBOLS),
                     )
                 img.paste(base_tile, offset, base_tile.convert("RGBA"))
 
